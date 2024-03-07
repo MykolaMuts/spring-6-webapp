@@ -2,6 +2,7 @@ package project.udemy.springframework.spring6webapp.domain;
 
 import jakarta.persistence.*;
 
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -14,7 +15,7 @@ public class Author {
     private String lastName;
 
     @ManyToMany(mappedBy = "authorSet")
-    private Set<Book> bookSet;
+    private Set<Book> bookSet = new HashSet<>();
 
     public Set<Book> getBookSet() {
         return bookSet;
