@@ -17,7 +17,7 @@ public class Publisher {
     private String state;
     private String zip;
 
-    @ManyToMany(mappedBy = "publisherSet")
+    @OneToMany(mappedBy = "publisher")
     private Set<Book> bookSet = new HashSet<>();
 
     public long getId() {
