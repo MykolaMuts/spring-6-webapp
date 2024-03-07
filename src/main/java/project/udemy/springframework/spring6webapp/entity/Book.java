@@ -1,4 +1,4 @@
-package project.udemy.springframework.spring6webapp.domain;
+package project.udemy.springframework.spring6webapp.entity;
 
 import jakarta.persistence.*;
 

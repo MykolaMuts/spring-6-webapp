@@ -2,8 +2,8 @@ package project.udemy.springframework.spring6webapp.bootstrap;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
-import project.udemy.springframework.spring6webapp.domain.Author;
-import project.udemy.springframework.spring6webapp.domain.Book;
+import project.udemy.springframework.spring6webapp.entity.Author;
+import project.udemy.springframework.spring6webapp.entity.Book;
 import project.udemy.springframework.spring6webapp.repositories.AuthorRepository;
 import project.udemy.springframework.spring6webapp.repositories.BookRepository;
 
