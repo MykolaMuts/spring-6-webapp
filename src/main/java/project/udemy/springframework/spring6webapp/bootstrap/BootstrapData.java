@@ -4,18 +4,22 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 import project.udemy.springframework.spring6webapp.entity.Author;
 import project.udemy.springframework.spring6webapp.entity.Book;
+import project.udemy.springframework.spring6webapp.entity.Publisher;
 import project.udemy.springframework.spring6webapp.repositories.AuthorRepository;
 import project.udemy.springframework.spring6webapp.repositories.BookRepository;
+import project.udemy.springframework.spring6webapp.repositories.PublisherRepository;
 
 @Component
 public class BootstrapData implements CommandLineRunner {
 
     private final AuthorRepository authorRepository;
     private final BookRepository bookRepository;
+    private final PublisherRepository publisherRepository;
 
-    public BootstrapData(AuthorRepository authorRepository, BookRepository bookRepository) {
+    public BootstrapData(AuthorRepository authorRepository, BookRepository bookRepository, PublisherRepository publisherRepository) {
         this.authorRepository = authorRepository;
         this.bookRepository = bookRepository;
+        this.publisherRepository = publisherRepository;
     }
 
     @Override
@@ -62,8 +66,37 @@ public class BootstrapData implements CommandLineRunner {
         authorRepository.save(johnSaved);
         authorRepository.save(rodSaved);
 
+        // Assigment 1
+
+        Publisher goodBookPublisher = new Publisher();
+
+        goodBookPublisher.setPublisherName("Good Book Records");
+        goodBookPublisher.setCity("LA");
+        goodBookPublisher.setState("California");
+        goodBookPublisher.setAddress("Kanye West house");
+        goodBookPublisher.setZip("808");
+
+        Publisher rocNationPublisher = new Publisher();
+
+        rocNationPublisher.setPublisherName("Roc Nation");
+        rocNationPublisher.setCity("New York");
+        rocNationPublisher.setState("New York State");
+        rocNationPublisher.setAddress("New York city hall");
+        rocNationPublisher.setZip("1696");
+
+        Publisher goodBookPublisherSaved = publisherRepository.save(goodBookPublisher);
+        Publisher rocNationPublisherSaved = publisherRepository.save(rocNationPublisher);
+
+        rocNationPublisherSaved.getBookSet().add(ruleBookSaved);
+
+        goodBookPublisherSaved.getBookSet().add(dddSaved);
+
+        publisherRepository.save(goodBookPublisherSaved);
+        publisherRepository.save(rocNationPublisherSaved);
+
         System.out.println("In Bootstrap");
         System.out.println("Author Count: " + authorRepository.count());
         System.out.println("Book Count: " + bookRepository.count());
+        System.out.println("Publisher Count: " + publisherRepository.count());
     }
 }
