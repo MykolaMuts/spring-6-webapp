@@ -82,13 +82,15 @@ public class BootstrapData implements CommandLineRunner {
         Publisher rocNationPublisherSaved = publisherRepository.save(rocNationPublisher);
 
         // Set Publisher to Book
-        ruleBookSaved.setPublisher(rocNationPublisherSaved);
-        noEJBSaved.setPublisher(goodBookPublisherSaved);
+        ruleBookSaved.setPublisher(goodBookPublisherSaved);
+
+        noEJBSaved.setPublisher(rocNationPublisherSaved);
+
         dddSaved.setPublisher(goodBookPublisherSaved);
 
         // Add book to publisher
-        rocNationPublisherSaved.getBooks().add(ruleBookSaved);
-        goodBookPublisherSaved.getBooks().add(noEJBSaved);
+        goodBookPublisherSaved.getBooks().add(ruleBookSaved);
+        rocNationPublisherSaved.getBooks().add(noEJBSaved);
         goodBookPublisherSaved.getBooks().add(dddSaved);
 
         // Set book to author
@@ -107,8 +109,10 @@ public class BootstrapData implements CommandLineRunner {
         publisherRepository.save(rocNationPublisherSaved);
         bookRepository.save(dddSaved);
         bookRepository.save(ruleBookSaved);
+        bookRepository.save(noEJBSaved);
         authorRepository.save(johnSaved);
         authorRepository.save(rodSaved);
+        authorRepository.save(ericSaved);
 
         System.out.println("In Bootstrap");
         System.out.println("Author Count: " + authorRepository.count());
