@@ -18,7 +18,7 @@ public class Publisher {
     private String zip;
 
     @OneToMany(mappedBy = "publisher")
-    private Set<Book> bookSet = new HashSet<>();
+    private Set<Book> books = new HashSet<>();
 
     public long getId() {
         return id;
@@ -68,12 +68,12 @@ public class Publisher {
         this.zip = zip;
     }
 
-    public Set<Book> getBookSet() {
-        return bookSet;
+    public Set<Book> getBooks() {
+        return books;
     }
 
-    public void setBookSet(Set<Book> bookSet) {
-        this.bookSet = bookSet;
+    public void setBooks(Set<Book> books) {
+        this.books = books;
     }
 
     @Override

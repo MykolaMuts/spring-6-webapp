@@ -87,20 +87,20 @@ public class BootstrapData implements CommandLineRunner {
         dddSaved.setPublisher(goodBookPublisherSaved);
 
         // Add book to publisher
-        rocNationPublisherSaved.getBookSet().add(ruleBookSaved);
-        goodBookPublisherSaved.getBookSet().add(noEJBSaved);
-        goodBookPublisherSaved.getBookSet().add(dddSaved);
+        rocNationPublisherSaved.getBooks().add(ruleBookSaved);
+        goodBookPublisherSaved.getBooks().add(noEJBSaved);
+        goodBookPublisherSaved.getBooks().add(dddSaved);
 
         // Set book to author
-        johnSaved.getBookSet().add(ruleBookSaved);
-        rodSaved.getBookSet().add(noEJBSaved);
-        ericSaved.getBookSet().add(dddSaved);
+        johnSaved.getBooks().add(ruleBookSaved);
+        rodSaved.getBooks().add(noEJBSaved);
+        ericSaved.getBooks().add(dddSaved);
 
 
         // Add author to book
-        ruleBookSaved.getAuthorSet().add(johnSaved);
-        noEJBSaved.getAuthorSet().add(rodSaved);
-        dddSaved.getAuthorSet().add(ericSaved);
+        ruleBookSaved.getAuthors().add(johnSaved);
+        noEJBSaved.getAuthors().add(rodSaved);
+        dddSaved.getAuthors().add(ericSaved);
 
         // Save it
         publisherRepository.save(goodBookPublisherSaved);
